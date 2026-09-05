@@ -2,7 +2,7 @@
 using namespace std;
 
 const int MOD = 1e9 + 7;
-const int MAXN = 1e9;
+const int MAXN = 1e6 + 5;
 long long fact[MAXN];
 
 
