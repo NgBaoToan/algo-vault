@@ -1,65 +1,48 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
-struct Fenwick {
-    int n;
-    vector<long long> bit;
+#define fast_io ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr)
 
-    Fenwick(int n) {
-        this->n = n;
-        bit.assign(n + 1, 0);
-    }
+#define ll long long
+#define ull unsigned long long
+#define ld long double
+#define db double
+#define int64 int64_t
+#define int128 __int128
 
-    void add(int i, long long val) {
-        while (i <= n) {
-            bit[i] += val;
-            i += i & -i;
-        }
-    }
+#define ar array
+#define vt vector
 
-    long long query(int i) {
-        long long sum = 0;
+#define ii pair<int, int>
+#define pll pair<ll, ll>
+#define vi vector<int>
+#define vll vector<ll>
+#define vii vector<ii>
+#define vpll vector<pll>
 
-        while (i > 0) {
-            sum += bit[i];
-            i -= i & -i;
-        }
+#define ft first
+#define sd second
 
-        return sum;
-    }
+#define pb push_back
+#define eb emplace_back
+#define mp make_pair
 
-    long long rangeQuery(int l, int r) {
-        return query(r) - query(l - 1);
-    }
-};
+#define all(x) (x).begin(), (x).end()
+#define rall(x) (x).rbegin(), (x).rend()
+#define sz(x) (int)(x).size()
 
-int main(){
-    ios_base::sync_with_stdio(false);
-    cin.tie(0); cout.tie(0);
+const int MOD = 1e9 + 7;
+const int INF = 1e9;
+const ll LINF = (1LL << 62);
+const ld EPS = 1e-9;
+const ld PI = acos(-1.0L);
 
-    int n, q; cin >> n >> q;
-    vector<int> x(n);
-    for(int i = 0; i < n; i++){
-        cin >> x[i];
-    }
+int main() {
+    fast_io;
 
-    Fenwick bits(x.size());
+    int q; cin >> q;
+    
 
-    for(int i = 0; i < n; i++){
-        bits.add(i + 1, x[i]);
-    }
-
-    while(q--){
-        int t; cin >> t;
-        if(t == 1){
-            int k, u; cin >> k >> u;
-            long long dif = u - x[k - 1];
-            bits.add(k, dif);
-            x[k - 1] = u;
-        }else{
-            int a, b; cin >> a >> b;
-            cout << bits.rangeQuery(a, b) << '\n';
-        }
-    }
     return 0;
 }
