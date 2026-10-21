@@ -13,7 +13,6 @@ using namespace std;
 
 #define ar array
 #define vt vector
-
 #define ii pair<int, int>
 #define pll pair<ll, ll>
 #define vi vector<int>
@@ -41,8 +40,31 @@ const ld PI = acos(-1.0L);
 int main() {
     fast_io;
 
-    int q; cin >> q;
-    
+    ll n, x;
+    cin >> n >> x;
+    vll a(n);
+    for(int i = 0; i < n; i++){
+        cin >> a[i];
+    }  
 
+    sort(all(a));
+    int l = 0;
+    int r = n - 1;
+    int cnt = 0;
+    while(l <= r){
+        if(l == r){
+            cnt++;
+            break;
+        }else if(a[l] + a[r] <= x){
+            cnt++;
+            l++;
+            r--;
+        }else{
+            r--;
+            cnt++;
+        }
+    }
+
+    cout << cnt << '\n';
     return 0;
 }
